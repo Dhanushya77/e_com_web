@@ -3,7 +3,12 @@ body{
     background-size: cover;
     
 }
-.container1{
+.main h1{
+    color: white;
+    text-shadow:  0 4px 8px rgba(0,0,0,0.5);
+    margin-bottom: 4vh;
+}
+.main{
     background-color:rgb(173, 173, 230);
     align-items: center;
 	justify-content: center;
@@ -15,26 +20,17 @@ body{
     text-align: center;
     box-shadow: 0 4px 8px rgba(0,0,0,0.5);
     padding: 10px;
-   
-}
-.container1 h1{
-    color: white;
-    text-shadow:  0 4px 8px rgba(0,0,0,0.5);
-    margin-bottom: 6vh;
-}
-.input{
-    padding: 10px;
-    border-radius: 10px;
-    border-style: none;
-    width: 15vw;
 }
 .input1{
     padding: 10px;
     border-radius: 10px;
     border-style: none;
-    width: 6vw;
-    margin-top: 4vh;
+    width: 15vw;
 }
-.main{
-    margin-top: 10vh;
+.input2{
+    padding: 10px;
+    border-radius: 10px;
+    border-style: none;
+    width: 6vw;
+    
 }
