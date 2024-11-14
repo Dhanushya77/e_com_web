@@ -6,6 +6,8 @@ urlpatterns = [
     path('logout',views.e_com_logout),
     path('shop_home',views.shop_home),
     path('add_pro',views.add_pro),
+    path('edit_pro/<id>',views.edit_pro),
+    
 ]
 
 
