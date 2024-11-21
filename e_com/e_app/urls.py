@@ -9,6 +9,7 @@ urlpatterns = [
     path('add_pro',views.add_pro),
     path('edit_pro/<id>',views.edit_pro),
     path('delete_pro/<pid>',views.delete_pro),
+    path('bookings',views.bookings),
     # --------user---------------------
     path('register',views.register),
     path('user_home',views.user_home),
@@ -18,7 +19,8 @@ urlpatterns = [
     path('qty_inc/<cid>',views.qty_inc),
     path('qty_dec/<cid>',views.qty_dec),
     path('user_bookings',views.user_bookings),
-    path('buy_pro/<pid>',views.buy_pro)
+    path('buy_pro/<pid>',views.buy_pro),
+    path('cart_buy/<cid>',views.cart_buy),
 ]
 
 

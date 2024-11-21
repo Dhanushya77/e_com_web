@@ -14,6 +14,7 @@
                 <p>{{i.products.name}}</p>
                 <p>{{i.products.offer_price}}</p>
                 <p><a href="qty_dec/{{i.pk}}">-</a>qty : {{i.qty}}<a href="qty_inc/{{i.pk}}">+</a></p>
+                <a href="../cart_buy/{{i.pk}}">Buy Now</a>
             </div>
             {% endfor %}
         </div>

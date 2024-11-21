@@ -93,6 +93,10 @@ def delete_pro(red,pid):
     os.remove('media/'+file)
     data.delete()
     return redirect(shop_home)
+
+def bookings(req):
+    booking=Buy.objects.all()[::-1]
+    return render(req,'shop/bookings.html',{'bookings':booking})
     
 # -----------------user---------------------------------------------
 
@@ -161,9 +165,22 @@ def buy_pro(req,pid):
     qty=1
     price=products.offer_price
     buy=Buy.objects.create(products=products,user=user,qty=qty,t_price=price)
+    buy.save()
     return redirect(user_bookings)
 
 def user_bookings(req):
     user=User.objects.get(username=req.session['user'])
-    bookings=Buy.objects.filter(user=user)
+    bookings=Buy.objects.filter(user=user)[::-1]
     return render(req,'user/bookings.html',{'bookings':bookings})
+
+def cart_buy(req,cid):
+    cart=Cart.objects.get(pk=cid)
+    price=cart.qty*cart.products.offer_price
+    buy=Buy.objects.create(products=cart.products,user=cart.user,qty=cart.qty,t_price=price)
+    buy.save()
+    data=product.objects.get(id=cart.products.id)
+    print(data)
+    product.stock-=cart.qty
+    product.save()
+    
+    return redirect(user_bookings)
