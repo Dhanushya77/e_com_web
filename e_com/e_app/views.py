@@ -4,6 +4,8 @@ from django.contrib import messages
 from.models import *
 import os
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
+from django.conf import settings
 
 # Create your views here.
 
@@ -108,6 +110,7 @@ def register(req):
         try:
             data=User.objects.create_user(first_name=uname,email=email,username=email,password=pswrd)
             data.save()
+            send_mail('Registration','Your registration completed', settings.EMAIL_HOST_USER, [email])
             return redirect(e_com_login)
         except:
             messages.warning(req,'Email already exist')
@@ -176,11 +179,9 @@ def user_bookings(req):
 def cart_buy(req,cid):
     cart=Cart.objects.get(pk=cid)
     price=cart.qty*cart.products.offer_price
+    products=cart.products
+    products.stock-=cart.qty
+    products.save()
     buy=Buy.objects.create(products=cart.products,user=cart.user,qty=cart.qty,t_price=price)
     buy.save()
-    data=product.objects.get(id=cart.products.id)
-    print(data)
-    product.stock-=cart.qty
-    product.save()
-    
     return redirect(user_bookings)
