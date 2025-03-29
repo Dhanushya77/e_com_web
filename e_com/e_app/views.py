@@ -88,7 +88,7 @@ def edit_pro(req,id):
         data = product.objects.get(pk=id)
         return render(req,'shop/edit_pro.html',{'data':data})
     
-def delete_pro(red,pid):
+def delete_pro(req,pid):
     data=product.objects.get(pk=pid)
     file=data.img.url
     file=file.split('/')[-1]
