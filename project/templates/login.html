@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            <h1>Login</h1>
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <strong>Warning!</strong>{{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="text" name="uname" class="input" placeholder="Username/Email ID" required><br><br>
+                <input type="password" name="password" class="input" placeholder="Password" required><br><br>
+                <input type="submit" class="input1" value="Login">
+            </form>
+            <p>Don't have an account? <a href="register">Register here</a></p>
+        </div>
+    </div>
+</body>
+</html>
